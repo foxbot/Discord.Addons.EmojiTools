@@ -5,6 +5,10 @@
 
 import emoji
 import io
+import locale
+
+# python needs a lot of motivation to use utf8
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 template = """
 using System.Collections.Generic;
