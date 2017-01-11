@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0-ci-*",
+  "packOptions": {
+    "owners": [ "foxbot" ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/420foxbot/Discord.Addons.EmojiTools"
+    },
+    "summary": "Parse :racing_car: into 🏎 (text to emoji)",
+    "tags": ["discord", "discord.net"]
+  },
+  "title": "Discord.Addons.EmojiTools",
+  "authors": [ "foxbot" ],
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+  },
+
+  "frameworks": {
+    "netstandard1.1": {
+      "imports": "dnxcore50"
+    }
+  }
+}
