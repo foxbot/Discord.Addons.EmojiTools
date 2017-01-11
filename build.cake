@@ -16,7 +16,7 @@ Task("Restore")
 Task("CodeGen")
     .Does(() =>
 {
-    using (var process = StartAndReturnProcess("python", new ProcessSettings { Arguments = "generator.py" }))
+    using (var process = StartAndReturnProcess("python3", new ProcessSettings { Arguments = "generator.py" }))
     {
         process.WaitForExit();
         var code = process.GetExitCode();
