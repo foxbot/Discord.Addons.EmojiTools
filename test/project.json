@@ -8,7 +8,8 @@
     "Microsoft.NET.Test.Sdk": "15.0.0-*",
     "xunit": "2.2.0-*",
     "xunit.runner.visualstudio": "2.2.0-*",
-    "dotnet-test-xunit": "2.2.0-*"
+    "dotnet-test-xunit": "2.2.0-*",
+    "Discord.Addons.EmojiTools": "*"
   },
 
   "frameworks": {
