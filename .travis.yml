@@ -6,11 +6,6 @@ matrix:
     sudo: required
     dotnet: 1.0.0-preview2-003121
     env: DOTNETCORE=1
-python:
-  - "3.5.2"
-install: "pip install emoji"
+install: "apt-get install -qq -y luajit lua-cjson"
 script:
-- export LANG=en_US.UTF-8
-- export LANGUAGE=en_US.UTF-8
-- export LC_ALL=en_US.UTF-8
 - bash build.sh

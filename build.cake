@@ -16,7 +16,7 @@ Task("Restore")
 Task("CodeGen")
     .Does(() =>
 {
-    using (var process = StartAndReturnProcess("python", new ProcessSettings { Arguments = "generator.py" }))
+    using (var process = StartAndReturnProcess("luajit", new ProcessSettings { Arguments = "generate.lua" }))
     {
         process.WaitForExit();
         var code = process.GetExitCode();

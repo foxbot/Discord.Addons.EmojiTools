@@ -1,7 +1,7 @@
 {
   "version": "1.0.0-ci-*",
   "packOptions": {
-    "owners": [ "foxbot" ],
+    "owners": [ "foxbot", "FiniteReality" ],
     "repository": {
       "type": "git",
       "url": "https://github.com/420foxbot/Discord.Addons.EmojiTools"
