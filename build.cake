@@ -36,7 +36,7 @@ Task("Build")
         OutputDirectory = "./artifacts/",
         VersionSuffix = suffix
     };
-    DotNetCorePack("./src/Discord.Addons.InteractiveCommands/", settings);
+    DotNetCorePack("./src/Discord.Addons.EmojiTools/", settings);
 });
 Task("Test")
     .Does(() =>
