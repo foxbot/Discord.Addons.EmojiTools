@@ -1,0 +1,13 @@
+language: csharp
+matrix:
+  include:
+  - os: linux
+    dist: trusty
+    sudo: required
+    dotnet: 1.0.0-preview2-003121
+    env: DOTNETCORE=1
+python:
+  - "3.5"
+install: "pip install emoji"
+script:
+- bash build.sh
