@@ -6,6 +6,8 @@ namespace Discord.Addons.EmojiTools
     {
         public static string FromText(string text)
         {
+            text = text.Trim(':');
+
             var unicode = default(string);
             if (EmojiMap.Map.TryGetValue(text, out unicode))
                 return unicode;
