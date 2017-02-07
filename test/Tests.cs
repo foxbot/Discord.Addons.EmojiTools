@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Xunit;
 using Discord.Addons.EmojiTools;
 
@@ -9,12 +9,12 @@ namespace Tests
         [Fact]
         public void Parse_Unicode()
         {
-            Assert.Equal("??", UnicodeEmoji.FromText(":racing_car:"));
+            Assert.Equal("🏎", UnicodeEmoji.FromText(":racing_car:"));
         }
         [Fact]
         public void Parse_Unicode_Alias()
         {
-            Assert.Equal("??", UnicodeEmoji.FromText(":camel:"));
+            Assert.Equal("🐫", UnicodeEmoji.FromText(":camel:"));
         }
         [Fact]
         public void Parse_Invalid_Key()

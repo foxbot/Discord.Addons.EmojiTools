@@ -3,6 +3,7 @@
 
 var MyGetKey = EnvironmentVariable("MYGET_KEY");
 string BuildNumber = EnvironmentVariable("TRAVIS_BUILD_NUMBER");
+string Branch = EnvironmentVariable("TRAVIS_BRANCH");
 
 Task("Restore")
     .Does(() =>
@@ -36,7 +37,7 @@ Task("Build")
         OutputDirectory = "./artifacts/",
         VersionSuffix = suffix
     };
-    DotNetCorePack("./src/Discord.Addons.InteractiveCommands/", settings);
+    DotNetCorePack("./src/Discord.Addons.EmojiTools/", settings);
 });
 Task("Test")
     .Does(() =>
@@ -44,6 +45,7 @@ Task("Test")
     DotNetCoreTest("./test/");
 });
 Task("Deploy")
+    .WithCriteria(Branch == "master")
     .Does(() =>
 {
     var settings = new NuGetPushSettings
