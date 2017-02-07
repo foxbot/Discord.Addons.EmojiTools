@@ -10,7 +10,7 @@ namespace Discord.Addons.EmojiTools
         public static IReadOnlyDictionary<string, string> Map = new Dictionary<string, string>
         {
 %s
-        }
+        };
     }
 }
 ]], "           [%q] = %q", {}
