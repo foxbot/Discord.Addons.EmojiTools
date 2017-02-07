@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-ci-*",
+  "version": "1.1.0-ci-*",
   "packOptions": {
     "owners": [ "foxbot", "FiniteReality" ],
     "repository": {
@@ -7,7 +7,8 @@
       "url": "https://github.com/420foxbot/Discord.Addons.EmojiTools"
     },
     "summary": "Parse :racing_car: into 🏎 (text to emoji)",
-    "tags": ["discord", "discord.net"]
+    "tags": ["discord", "discord.net"],
+    "releaseNotes": "1.1.0 - use discord's emoji map, instead of the one exported from twemoji (allows 1:1 use of discord emoji aliases)"
   },
   "title": "Discord.Addons.EmojiTools",
   "authors": [ "foxbot" ],
