@@ -4,7 +4,6 @@
 var MyGetKey = EnvironmentVariable("MYGET_KEY");
 string BuildNumber = EnvironmentVariable("TRAVIS_BUILD_NUMBER");
 string Branch = EnvironmentVariable("TRAVIS_BRANCH");
-string PullRequest = EnvironmentVariable("TRAVIS_PULL_REQUEST");
 
 Task("Restore")
     .Does(() =>
@@ -46,7 +45,7 @@ Task("Test")
     DotNetCoreTest("./test/");
 });
 Task("Deploy")
-    .WithCriteria(Branch == "master" && PullRequest != "false")
+    .WithCriteria(Branch == "master")
     .Does(() =>
 {
     var settings = new NuGetPushSettings
