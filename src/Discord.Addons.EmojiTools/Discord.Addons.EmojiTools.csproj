@@ -1,13 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
   <PropertyGroup>
+    <VersionPrefix>$(BuildVersion)</VersionPrefix>
+    <VersionSuffix Condition="'$(BuildNumber)' == ''">dev</VersionSuffix>
     <TargetFramework>netstandard1.1</TargetFramework>
+    <AssemblyName>Discord.Addons.EmojiTools</AssemblyName>
+    <Authors>foxbot</Authors>
+    <Description>Parse :racing_car: into 🏎 (text to emoji), or vice-versa (emoji to text)</Description>
+    <PackageTags>discord;discord.net</PackageTags>
+    <PackageProjectUrl>https://github.com/foxbot/Discord.Addons.EmojiTools</PackageProjectUrl>
+    <PackageLicenseUrl>http://opensource.org/licenses/ISC</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/foxbot/Discord.Addons.EmojiTools</RepositoryUrl>
+    <RootNamespace>Discord.Addons.EmojiTools</RootNamespace>
+    <PackageReleaseNotes>$(ReleaseNotes)</PackageReleaseNotes>
+
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="**\*.cs" />
-    <EmbeddedResource Include="**\*.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NETStandard.Library" Version="1.6" />
-    <PackageReference Include="Discord.Net.Core" Version="1.0.0-beta2-*" />
-  </ItemGroup>
 </Project>

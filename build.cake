@@ -4,6 +4,7 @@
 var MyGetKey = EnvironmentVariable("MYGET_KEY");
 string BuildNumber = EnvironmentVariable("TRAVIS_BUILD_NUMBER");
 string Branch = EnvironmentVariable("TRAVIS_BRANCH");
+ReleaseNotes Notes = null;
 
 Task("Restore")
     .Does(() =>
@@ -14,34 +15,28 @@ Task("Restore")
     };
     DotNetCoreRestore(settings);
 });
-Task("CodeGen")
+Task("ReleaseNotes")
     .Does(() =>
 {
-    using (var process = StartAndReturnProcess("luajit", new ProcessSettings { Arguments = "generate.lua" }))
-    {
-        process.WaitForExit();
-        var code = process.GetExitCode();
-        if (code != 0)
-        {
-            throw new Exception(string.Format("Code Generation script failed! Exited {0}", code));
-        }
-    }
+    Notes = ParseReleaseNotes("./ReleaseNotes.md");
+    Information("Release Version: {0}", Notes.Version);
 });
 Task("Build")
+    .IsDependentOn("ReleaseNotes")
     .Does(() =>
 {
-    var suffix = BuildNumber.PadLeft(5,'0');
+    var suffix = BuildNumber != null ? BuildNumber.PadLeft(5,'0') : "";
     var settings = new DotNetCorePackSettings
     {
         Configuration = "Release",
         OutputDirectory = "./artifacts/",
-        VersionSuffix = suffix
+        EnvironmentVariables = new Dictionary<string, string> {
+            { "BuildVersion", Notes.Version.ToString() },
+            { "BuildNumber", suffix },
+            { "ReleaseNotes", string.Join("\n", Notes.Notes) },
+        },
     };
     DotNetCorePack("./src/Discord.Addons.EmojiTools/", settings);
-});
-Task("Test")
-    .Does(() =>
-{
     DotNetCoreTest("./test/");
 });
 Task("Deploy")
@@ -59,9 +54,7 @@ Task("Deploy")
 
 Task("Default")
     .IsDependentOn("Restore")
-    .IsDependentOn("CodeGen")
     .IsDependentOn("Build")
-    .IsDependentOn("Test")
     .IsDependentOn("Deploy")
     .Does(() => 
 {
