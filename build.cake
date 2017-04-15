@@ -54,7 +54,7 @@ Task("Build")
 Task("Test")
     .Does(() =>
 {
-    DotNetCoreTest("./test/");
+    //DotNetCoreTest("./test/");
 });
 Task("Deploy")
     .WithCriteria(Branch == "master")
