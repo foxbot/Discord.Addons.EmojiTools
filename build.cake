@@ -21,6 +21,19 @@ Task("ReleaseNotes")
     Notes = ParseReleaseNotes("./ReleaseNotes.md");
     Information("Release Version: {0}", Notes.Version);
 });
+Task("CodeGen")
+    .Does(() =>
+{
+    using (var process = StartAndReturnProcess("luajit", new ProcessSettings { Arguments = "generate.lua" }))
+    {
+        process.WaitForExit();
+        var code = process.GetExitCode();
+        if (code != 0)
+        {
+            throw new Exception(string.Format("Code Generation script failed! Exited {0}", code));
+        }
+    }
+});
 Task("Build")
     .IsDependentOn("ReleaseNotes")
     .Does(() =>
@@ -37,7 +50,11 @@ Task("Build")
         },
     };
     DotNetCorePack("./src/Discord.Addons.EmojiTools/", settings);
-    //DotNetCoreTest("./test/");
+});
+Task("Test")
+    .Does(() =>
+{
+    DotNetCoreTest("./test/");
 });
 Task("Deploy")
     .WithCriteria(Branch == "master")
@@ -54,7 +71,9 @@ Task("Deploy")
 
 Task("Default")
     .IsDependentOn("Restore")
+    .IsDependentOn("CodeGen")
     .IsDependentOn("Build")
+    .IsDependentOn("Test")
     .IsDependentOn("Deploy")
     .Does(() => 
 {
