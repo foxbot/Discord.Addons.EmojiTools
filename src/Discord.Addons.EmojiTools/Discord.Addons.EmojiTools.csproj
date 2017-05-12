@@ -19,6 +19,6 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Core" Version="1.0.0-rc2-*" />
+    <PackageReference Include="Discord.Net.Core" Version="1.0.0-rc3" />
   </ItemGroup>
 </Project>
