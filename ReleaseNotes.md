@@ -1,3 +1,6 @@
+### New in 2.0.2 (Released 2017/08/04)
+- Use Discord.Net 1.0.1
+
 ### New in 2.0.1 (Released 2017/05/12)
 - Use Discord.Net RC3
 
